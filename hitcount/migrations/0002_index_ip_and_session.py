@@ -18,9 +18,4 @@ class Migration(migrations.Migration):
             name='session',
             field=models.CharField(max_length=40, db_index=True, editable=False),
         ),
-        migrations.AlterField(
-            model_name='hitcount',
-            name='object_pk',
-            field=models.PositiveIntegerField(verbose_name='object ID'),
-        ),
     ]

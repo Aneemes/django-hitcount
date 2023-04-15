@@ -10,6 +10,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import gettext_lazy as _
 
 from etc.toolbox import get_model_class_from_string
+import uuid
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
@@ -43,7 +44,7 @@ class HitCountBase(models.Model):
     modified = models.DateTimeField(auto_now=True)
     content_type = models.ForeignKey(
         ContentType, related_name="content_type_set_for_%(class)s", on_delete=models.CASCADE)
-    object_pk = models.PositiveIntegerField(verbose_name='object ID')
+    object_pk = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     content_object = GenericForeignKey('content_type', 'object_pk')
 
     objects = HitCountManager()
