@@ -1,4 +1,5 @@
 django-hitcount
+This fork is modified to work with object_pk being uuid instead of PositiveIntegerField in the main repo.
 ===============
 
 .. image:: https://travis-ci.org/thornomad/django-hitcount.svg?branch=master
