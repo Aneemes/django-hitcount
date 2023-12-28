@@ -1,5 +1,5 @@
 from datetime import timedelta
-
+import uuid
 from django.db import models
 from django.conf import settings
 from django.db.models import F
@@ -42,12 +42,11 @@ class HitCountBase(models.Model):
     came on Django 3.2
 
     """
-    id = models.BigAutoField(primary_key=True)
     hits = models.PositiveIntegerField(default=0)
     modified = models.DateTimeField(auto_now=True)
     content_type = models.ForeignKey(
         ContentType, related_name="content_type_set_for_%(class)s", on_delete=models.CASCADE)
-    object_pk = models.PositiveIntegerField(verbose_name='object ID')
+    object_pk = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, verbose_name='object ID')
     content_object = GenericForeignKey('content_type', 'object_pk')
 
     objects = HitCountManager()

@@ -25,9 +25,4 @@ class Migration(migrations.Migration):
             name='id',
             field=models.BigAutoField(primary_key=True, serialize=False),
         ),
-        migrations.AlterField(
-            model_name='hitcount',
-            name='id',
-            field=models.BigAutoField(primary_key=True, serialize=False),
-        ),
     ]
